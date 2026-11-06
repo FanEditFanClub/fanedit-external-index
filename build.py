@@ -668,6 +668,61 @@ except Exception as exc:
         % (type(exc).__name__, exc))
     EXTRA_ADAPTERS = {}
 
+try:
+    from doc_sync import sync_manifest as _sync_manifest
+except Exception as exc:
+    # Same rule as adapters_extra: a broken doc_sync must never take the
+    # build down -- the on-disk manifest is used instead.
+    log("WARNING: doc_sync unavailable (%s: %s) -- manifest sync disabled"
+        % (type(exc).__name__, exc))
+    _sync_manifest = None
+
+
+# ---------------------------------------------------------------------------
+# drive junk filter
+# ---------------------------------------------------------------------------
+
+# Drive source folders carry non-video junk alongside the edits
+# (.exe/.dll installers, .jpg/.png artwork, .gba ROMs, .iso images,
+# "Untitled"/"INFO" placeholders). The bot ranks video-like records
+# above the rest, but the junk still bloats the index and can win a
+# weak title match, so it is dropped at build time.
+_JUNK_TITLES = {"untitled", "info", "edit info", "edit-info", "readme",
+                "info.txt", "edit info.txt"}
+_JUNK_EXTS = {".exe", ".dll", ".jpg", ".jpeg", ".png", ".gif", ".bmp",
+              ".webp", ".gba", ".iso", ".img", ".bin", ".apk", ".zip",
+              ".rar", ".7z", ".torrent"}
+
+
+def is_drive_junk(rec):
+    """True when a Drive file record is non-video junk.
+
+    Folders are always kept (they are collections, not files), and
+    non-Drive records are untouched. A file is junk when its bare title
+    is a generic placeholder, or its extension is a known non-video
+    type. Unknown extensions and extensionless files are kept -- the
+    filter only drops what is certainly junk.
+    """
+    if not isinstance(rec, dict):
+        return False
+    if rec.get("link_kind") != "drive":
+        return False
+    if rec.get("kind") == "folder":
+        return False
+    title = (rec.get("title") or "").strip()
+    if not title:
+        return True
+    base = title
+    ext = ""
+    if "." in title:
+        base, ext = title.rsplit(".", 1)
+        ext = "." + ext.lower()
+    if base.strip().lower() in _JUNK_TITLES:
+        return True
+    if ext in _JUNK_EXTS:
+        return True
+    return False
+
 
 # ---------------------------------------------------------------------------
 # collection overlap filter
@@ -727,6 +782,30 @@ def main():
         print(json.dumps({"error": "cannot read sources.json: %s" % exc}),
               file=sys.stdout)
         return 1
+
+    # Auto-discovery: the Master Links doc is the source of truth. Re-read
+    # it every run and regenerate the manifest, so new sources the user
+    # adds to the doc are indexed from the next build without a manual
+    # manifest edit. Any sync failure falls back to the on-disk manifest
+    # (logged, never fatal), and the regenerated manifest is written to
+    # disk so the Pages artifact -- and the workflow's commit-back step --
+    # carry the fresh copy.
+    sync_report = None
+    if _sync_manifest is not None:
+        synced, sync_report, sync_ok = _sync_manifest(sources)
+        if sync_ok:
+            sources = synced
+            try:
+                SOURCES_PATH.write_text(
+                    json.dumps(sources, indent=2, ensure_ascii=False),
+                    encoding="utf-8")
+                log("SYNC manifest: %s" % json.dumps(sync_report))
+            except Exception as exc:
+                log("WARNING: could not write regenerated sources.json (%s)"
+                    % exc)
+        else:
+            log("WARNING: manifest sync failed (%s) -- using on-disk manifest"
+                % sync_report.get("error", "?"))
 
     # Soft global budget: the workflow runs hourly, so a run must finish
     # well inside the hour. After the budget, remaining sources are logged
@@ -796,7 +875,7 @@ def main():
     # Drop anything already in the collection (exact normalized-title match,
     # or a Drive id already present in the collection index graph).
     coll_titles, coll_ids, coll_ok = fetch_collection_titles_and_ids(ctx)
-    final = []
+    kept = []
     overlap_title_dropped = 0
     overlap_id_dropped = 0
     for rec in deduped:
@@ -807,6 +886,17 @@ def main():
         did = drive_id_from_url(rec.get("url", ""))
         if coll_ok and did and did in coll_ids:
             overlap_id_dropped += 1
+            continue
+        kept.append(rec)
+
+    # Drop non-video junk from Drive sources (installers, artwork, ROMs,
+    # ISOs, "Untitled"/"INFO" placeholders). Folders, video, subs, docs
+    # and extensionless files are kept.
+    final = []
+    junk_dropped = 0
+    for rec in kept:
+        if is_drive_junk(rec):
+            junk_dropped += 1
             continue
         final.append(rec)
 
@@ -825,6 +915,8 @@ def main():
         "dedup_dropped": dedup_dropped,
         "overlap_title_dropped": overlap_title_dropped,
         "overlap_id_dropped": overlap_id_dropped,
+        "junk_dropped": junk_dropped,
+        "manifest_sync": sync_report,
         "collection_index_ok": coll_ok,
         "collection_titles": len(coll_titles),
         "per_source": per_source,
