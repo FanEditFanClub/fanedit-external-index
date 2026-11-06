@@ -1,5 +1,218 @@
 [
   {
+    "label": "Fan Edit Fan Club",
+    "url": "https://sites.google.com/view/faneditfanclub/home",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own site, not an external source."
+  },
+  {
+    "label": "Fan Edit Central Database",
+    "url": "https://faneditcentral.wixsite.com/home",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Sheet",
+    "url": "https://docs.google.com/spreadsheets/d/18X0QzR904z94NZd7RXOaCuIa117fF0jnEmd7smmj7D0/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source",
+    "note": "Data tab 'By Release Date' (4,643 rows); first tab is a disclaimer sheet.",
+    "sheet": "By Release Date"
+  },
+  {
+    "label": "Sort By Fan Editor OR Original Title",
+    "url": "https://docs.google.com/spreadsheets/d/18X0QzR904z94NZd7RXOaCuIa117fF0jnEmd7smmj7D0/edit?gid=316095198#gid=316095198",
+    "adapter": "sheet",
+    "type": "duplicate",
+    "gid": "316095198",
+    "note": "Sheet tab selected by gid in URL.",
+    "reason": "Same Central Database sheet as 'Sheet'; sort-helper tab over the same data, not a separate catalog."
+  },
+  {
+    "label": "FANEDIT.ORG",
+    "url": "http://fanedit.org",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Fan Edit Search",
+    "url": "https://fanedit.org/fanedit-search/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Handled by the extra-adapters module (fanedit.org)."
+  },
+  {
+    "label": "Fan Worx",
+    "url": "https://www.fanworx.org/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "MRDb",
+    "url": "https://www.moviesremastered.com/hub.php",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Original Trilogy",
+    "url": "https://originaltrilogy.com/discussion/Fan-Edits-and-Projects-for-Other-Properties/id/11/page/1",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Fan Edit Fan Club Reddit Feed",
+    "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "r/BadMoviesMadeLessBad",
+    "url": "https://www.reddit.com/r/BadMoviesMadeLessBad/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/deletedscenesmovies",
+    "url": "https://www.reddit.com/r/deletedscenesmovies/?screen_view_count=1",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Familyedit",
+    "url": "https://www.reddit.com/r/Familyedit/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Familyedits",
+    "url": "https://www.reddit.com/r/Familyedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FanEditCentral",
+    "url": "https://www.reddit.com/r/FanEditCentral/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FanEditedMovies",
+    "url": "https://www.reddit.com/r/FanEditedMovies/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FanEditFanClub",
+    "url": "https://www.reddit.com/r/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "r/faneditfrontier",
+    "url": "https://www.reddit.com/r/faneditfrontier/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/fanedit",
+    "url": "https://www.reddit.com/r/fanedit/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/fanedits",
+    "url": "https://www.reddit.com/r/fanedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FANEDITS_",
+    "url": "https://www.reddit.com/r/FANEDITS_/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Faneditdotorg_News",
+    "url": "https://www.reddit.com/r/Faneditdotorg_News/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/GamesTheMovie",
+    "url": "https://www.reddit.com/r/GamesTheMovie/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/moviesremastered",
+    "url": "https://www.reddit.com/r/moviesremastered/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/pentexproductions",
+    "url": "https://www.reddit.com/r/pentexproductions/?screen_view_count=1&ext-referrer=DIRECT",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Rett_Renders",
+    "url": "https://www.reddit.com/r/Rett_Renders/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/starlightfanedits",
+    "url": "https://www.reddit.com/r/starlightfanedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/TheEditRoom",
+    "url": "https://www.reddit.com/r/TheEditRoom/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Unfair",
+    "url": "https://www.reddit.com/r/Unfair/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/YourFanEdits",
+    "url": "https://www.reddit.com/r/YourFanedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
     "label": "AcyliaEditz Fan Edits",
     "url": "https://drive.google.com/drive/folders/1BX7whTXroHCru4J8y7tjUGN6LOC-ePHT?usp=drive_link",
     "adapter": "drive_folder",
@@ -424,13 +637,6 @@
     "note": "Best-effort website adapter (extra-adapters module)."
   },
   {
-    "label": "Fan Edit Fan Club",
-    "url": "https://sites.google.com/view/faneditfanclub/home",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "The club's own site, not an external source."
-  },
-  {
     "label": "Fan Edits United",
     "url": "https://x.com/mwhoopsada68394?s=11",
     "adapter": "website",
@@ -605,211 +811,6 @@
     "note": "Best-effort website adapter (extra-adapters module)."
   },
   {
-    "label": "Fan Edit Central Database",
-    "url": "https://faneditcentral.wixsite.com/home",
-    "adapter": "website",
-    "type": "source",
-    "note": "Best-effort website adapter (extra-adapters module)."
-  },
-  {
-    "label": "Sheet",
-    "url": "https://docs.google.com/spreadsheets/d/18X0QzR904z94NZd7RXOaCuIa117fF0jnEmd7smmj7D0/edit?usp=sharing",
-    "adapter": "sheet",
-    "type": "source",
-    "sheet": "By Release Date",
-    "note": "Data tab 'By Release Date' (4,643 rows); first tab is a disclaimer sheet."
-  },
-  {
-    "label": "Sort By Fan Editor OR Original Title",
-    "url": "https://docs.google.com/spreadsheets/d/18X0QzR904z94NZd7RXOaCuIa117fF0jnEmd7smmj7D0/edit?gid=316095198#gid=316095198",
-    "adapter": "sheet",
-    "type": "duplicate",
-    "note": "Sheet tab selected by gid in URL.",
-    "reason": "Same Central Database sheet as 'Sheet'; sort-helper tab over the same data, not a separate catalog."
-  },
-  {
-    "label": "FANEDIT.ORG",
-    "url": "http://FANEDIT.ORG",
-    "adapter": "website",
-    "type": "source",
-    "note": "Best-effort website adapter (extra-adapters module)."
-  },
-  {
-    "label": "Fan Edit Search",
-    "url": "https://fanedit.org/fanedit-search/",
-    "adapter": "website",
-    "type": "source",
-    "note": "Handled by the extra-adapters module (fanedit.org)."
-  },
-  {
-    "label": "Fan Worx",
-    "url": "https://www.fanworx.org/",
-    "adapter": "website",
-    "type": "source",
-    "note": "Best-effort website adapter (extra-adapters module)."
-  },
-  {
-    "label": "MRDb",
-    "url": "https://www.moviesremastered.com/hub.php",
-    "adapter": "website",
-    "type": "source",
-    "note": "Best-effort website adapter (extra-adapters module)."
-  },
-  {
-    "label": "Original Trilogy",
-    "url": "https://originaltrilogy.com/discussion/Fan-Edits-and-Projects-for-Other-Properties/id/11/page/1",
-    "adapter": "website",
-    "type": "source",
-    "note": "Best-effort website adapter (extra-adapters module)."
-  },
-  {
-    "label": "Fan Edit Fan Club Reddit Feed",
-    "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/BadMoviesMadeLessBad",
-    "url": "https://www.reddit.com/r/BadMoviesMadeLessBad/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/deletedscenesmovies",
-    "url": "https://www.reddit.com/r/deletedscenesmovies/?screen_view_count=1",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/Familyedit",
-    "url": "https://www.reddit.com/r/Familyedit/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/Familyedits",
-    "url": "https://www.reddit.com/r/Familyedits/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/FanEditCentral",
-    "url": "https://www.reddit.com/r/FanEditCentral/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/FanEditedMovies",
-    "url": "https://www.reddit.com/r/FanEditedMovies/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/FanEditFanClub",
-    "url": "https://www.reddit.com/r/FanEditFanClub",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/faneditfrontier",
-    "url": "https://www.reddit.com/r/faneditfrontier/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/fanedit",
-    "url": "https://www.reddit.com/r/fanedit/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/fanedits",
-    "url": "https://www.reddit.com/r/fanedits/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/FANEDITS_",
-    "url": "https://www.reddit.com/r/FANEDITS_/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/Faneditdotorg_News",
-    "url": "https://www.reddit.com/r/Faneditdotorg_News/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/GamesTheMovie",
-    "url": "https://www.reddit.com/r/GamesTheMovie/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/moviesremastered",
-    "url": "https://www.reddit.com/r/moviesremastered/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/pentexproductions",
-    "url": "https://www.reddit.com/r/pentexproductions/?screen_view_count=1&ext-referrer=DIRECT",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/Rett_Renders",
-    "url": "https://www.reddit.com/r/Rett_Renders/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/starlightfanedits",
-    "url": "https://www.reddit.com/r/starlightfanedits/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/TheEditRoom",
-    "url": "https://www.reddit.com/r/TheEditRoom/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/Unfair",
-    "url": "https://www.reddit.com/r/Unfair/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
-    "label": "r/YourFanEdits",
-    "url": "https://www.reddit.com/r/YourFanedits/",
-    "adapter": "none",
-    "type": "out_of_scope",
-    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
-  },
-  {
     "label": "Archive.org - Fan Edit Search",
     "url": "https://archive.org/search?query=Fan+Edit&sort=-addeddate",
     "adapter": "none",
@@ -850,5 +851,593 @@
     "adapter": "none",
     "type": "search_template",
     "note": "Query-URL template for later fallback use; not indexed."
+  },
+  {
+    "label": "Editors United",
+    "url": "https://discord.com/invite/BrmD7N3bHF",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "Fan Edit Fan Club",
+    "url": "https://discord.gg/d8A9xHTey7",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "📐cyber-chat💬",
+    "url": "https://discord.gg/hzP7hwqTq",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "👨‍💻editors",
+    "url": "https://discord.gg/DJtWM7CGS",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "📐cyber-voice🗣️",
+    "url": "https://discord.gg/jCCbX3etT",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "🪭fan-edit-central-database",
+    "url": "https://discord.gg/Dpcd2rjuY",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "🗂️fan-edit-fan-club-collection",
+    "url": "https://discord.gg/XdDZZ8444q",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "FireMerk+",
+    "url": "https://discord.gg/BW375cF5GX",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "INIGHTMARES +",
+    "url": "https://discord.gg/Ev53kseC66",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "Movies Remastered Fanedits Discord",
+    "url": "https://discord.com/invite/EBdQVXhDUh",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "Paxtn & Elgyn’s Edits",
+    "url": "https://discord.gg/wjYHZkEhD8",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "r/fanedits (official)",
+    "url": "https://discord.gg/6RswRKXp3M",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "The Family Edit Center",
+    "url": "https://discord.com/invite/Gtrx3sRqkA",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "The Star Wars Trilogy Community",
+    "url": "https://discord.gg/bD9u7sHE7H",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "COUNCIL OF K-FANEDITS",
+    "url": "https://www.facebook.com/groups/2729395880677639/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "Fan Edit Fan Club",
+    "url": "https://www.facebook.com/groups/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Fanedit tidbits",
+    "url": "https://www.facebook.com/groups/fanedit",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "Movie FanEdit’s Group Lets Find These Great Movies",
+    "url": "https://www.facebook.com/groups/1114745849539951",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "Movies Remastered Chat Room",
+    "url": "https://www.facebook.com/groups/MRChatRoom/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "The 'Official' Workprint Channel",
+    "url": "https://www.facebook.com/groups/285239246721271/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "The FanEdit & Workprint Hub 🎥🍿💀🖤",
+    "url": "https://www.facebook.com/groups/1480670097295925/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "The Workprint Fan Edit And Format Appreciation Society Backup",
+    "url": "https://www.facebook.com/groups/1658296262451713/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "Website",
+    "url": "https://sites.google.com/view/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Linktree",
+    "url": "https://linktr.ee/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Gravatar",
+    "url": "https://gravatar.com/scrumptiously4cebb12f65",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "PayPal",
+    "url": "https://www.paypal.biz/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Venmo",
+    "url": "https://venmo.com/u/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Patreon",
+    "url": "https://www.patreon.com/cw/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Discord Profile",
+    "url": "https://discord.com/users/1529915104659898541",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "X Profile",
+    "url": "https://x.com/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "X Group Chat",
+    "url": "https://x.com/i/chat/group_join/g2084666734565285936/d014sDtior",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Fan Editors X List",
+    "url": "https://x.com/i/lists/2072540475530084770",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Threads",
+    "url": "https://www.threads.net/@faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Bluesky",
+    "url": "https://bsky.app/profile/faneditfanclub.bsky.social",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Fan Editors Bluesky List",
+    "url": "https://bsky.app/profile/faneditfanclub.bsky.social/lists/3mrshgzpzgk2s",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Truth Social",
+    "url": "https://truthsocial.com/@FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "mastodon",
+    "url": "https://mastodon.social/@FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Facebook Page",
+    "url": "https://www.facebook.com/FanEditFanClub/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Instagram",
+    "url": "https://www.instagram.com/faneditfanclub/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "TikTok",
+    "url": "https://www.tiktok.com/@faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Snapchat",
+    "url": "https://www.snapchat.com/@faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/@FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Vimeo",
+    "url": "https://vimeo.com/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Rumble",
+    "url": "https://rumble.com/user/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Twitch",
+    "url": "https://www.twitch.tv/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "LinkedIn",
+    "url": "http://www.linkedin.com/in/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "tumblr",
+    "url": "https://www.tumblr.com/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Medium",
+    "url": "https://medium.com/@faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "WordPress",
+    "url": "https://profiles.wordpress.org/faneditfanclub/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Pinterest",
+    "url": "https://www.pinterest.com/FanEditFanClub/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Fan Edit Fan Club Reddit Feed",
+    "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/new/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Eventbrite",
+    "url": "https://faneditfanclub.eventbrite.com/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "FANEDIT.ORG",
+    "url": "https://fanedit.org/forums/members/faneditfanclub.77013/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "MRDb",
+    "url": "https://www.moviesremastered.com/user/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "FanWorx",
+    "url": "https://www.fanworx.org/users/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Original Trilogy",
+    "url": "https://originaltrilogy.com/user/FanEditFanClub/id/114627",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Star Wars Trilogy",
+    "url": "https://forums.thestarwarstrilogy.com/members/faneditfanclub.103634/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Rutracker",
+    "url": "https://rutracker.org/forum/profile.php?mode=viewprofile&u=55366254",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "IMDb",
+    "url": "https://www.imdb.com/user/p.ieo7ewhuvte7xbevoomk3uoptm?ref_=ext_shr_lnk",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "TMDB",
+    "url": "https://www.themoviedb.org/u/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Letterboxd",
+    "url": "https://letterboxd.com/FanEditFanClub/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "serializd",
+    "url": "https://www.serializd.com/user/FanEditFanClub/profile",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Spotify",
+    "url": "https://open.spotify.com/user/31tn37rwnwqbaxnjnoxoijh3qh7u",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "SoundCloud",
+    "url": "https://soundcloud.com/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "bandcamp",
+    "url": "https://bandcamp.com/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Flickr",
+    "url": "https://www.flickr.com/people/204825721@N02/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Imgur",
+    "url": "https://imgur.com/user/FanEditFanClub/about",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "DeviantArt",
+    "url": "https://www.deviantart.com/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Dribbble",
+    "url": "https://dribbble.com/fan-edit-fan-club",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "500px",
+    "url": "https://500px.com/p/faneditfanclub?view=photos",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Behance",
+    "url": "https://www.behance.net/faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Figma",
+    "url": "https://www.figma.com/@faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Creative Market",
+    "url": "https://creativemarket.com/users/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Autodesk",
+    "url": "https://forums.autodesk.com/t5/user/viewprofilepage/user-id/19344251",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "eBay",
+    "url": "https://www.ebay.com/usr/TheFanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Etsy",
+    "url": "https://www.etsy.com/people/ech7pubmwgeaygs8",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Foursquare",
+    "url": "https://app.foursquare.com/user/1416754388",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "GitHub",
+    "url": "https://github.com/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "CodePen",
+    "url": "https://codepen.io/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Substack",
+    "url": "https://substack.com/@faneditfanclub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Xbox",
+    "url": "https://www.xbox.com/en-US/play/user/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Steam",
+    "url": "https://steamcommunity.com/id/FanEditFanClub/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Rockstar Games",
+    "url": "https://socialclub.rockstargames.com/member/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
+  },
+  {
+    "label": "Email",
+    "url": "mailto:FanEditFanClub@gmail.com",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own channel, not an external source."
   }
 ]
