@@ -115,6 +115,7 @@ class _State:
     def __init__(self):
         self.fetches = 0
         self.rate_limited = False
+        self.last_error = ""
 
 
 def _fetch_text(ctx, state, url, label, timeout=30, quiet=False):
@@ -156,7 +157,9 @@ def _fetch_bytes_direct(url, label, ctx, state, data=None, headers=None,
                         timeout=30):
     """Direct urllib fetch (needed for POST / Authorization headers).
 
-    Returns bytes or None. Never raises; 429 is logged as rate-limited.
+    Returns bytes or None. Never raises; 429 is recorded as rate-limited.
+    Failures are recorded on state.last_error (no logging here) so the
+    calling adapter can emit exactly one SKIP line.
     """
     if state is not None:
         if state.rate_limited or state.fetches >= MAX_FETCHES_PER_SOURCE:
@@ -170,30 +173,39 @@ def _fetch_bytes_direct(url, label, ctx, state, data=None, headers=None,
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return resp.read()
     except urllib.error.HTTPError as exc:
-        if exc.code == 429 or _is_rate_limit(exc):
-            if state is not None:
+        if state is not None:
+            if exc.code == 429 or _is_rate_limit(exc):
                 state.rate_limited = True
-            _log(ctx, "SKIP %s: rate-limited (HTTP 429) on %s — retry next run"
-                 % (label, url))
-        else:
-            body = b""
-            try:
-                body = exc.read()[:200]
-            except Exception:
-                pass
-            _log(ctx, "SKIP %s: HTTP %s on %s %s"
-                 % (label, exc.code, url, body.decode("utf-8", "replace")))
+                state.last_error = "rate-limited (HTTP 429)"
+            else:
+                body = b""
+                try:
+                    body = exc.read()[:200]
+                except Exception:
+                    pass
+                state.last_error = ("HTTP %s on %s %s"
+                                    % (exc.code, url,
+                                       body.decode("utf-8", "replace")))
         return None
     except Exception as exc:  # noqa: BLE001
-        if _is_rate_limit(exc):
-            if state is not None:
+        if state is not None:
+            if _is_rate_limit(exc):
                 state.rate_limited = True
-            _log(ctx, "SKIP %s: rate-limited on %s — retry next run"
-                 % (label, url))
-        else:
-            _log(ctx, "SKIP %s: fetch failed for %s: %s"
-                 % (label, url, _short_err(exc)))
+                state.last_error = "rate-limited"
+            else:
+                state.last_error = ("fetch failed for %s: %s"
+                                    % (url, _short_err(exc)))
         return None
+
+
+def _skip_from_state(ctx, label, state, fallback):
+    """Emit the single SKIP line for a failed direct fetch."""
+    if state is not None and state.rate_limited:
+        _log(ctx, "SKIP %s: rate-limited (HTTP 429) — retry next run" % label)
+    elif state is not None and state.last_error:
+        _log(ctx, "SKIP %s: %s" % (label, state.last_error))
+    else:
+        _log(ctx, "SKIP %s: %s" % (label, fallback))
 
 
 def _short_err(exc):
@@ -267,7 +279,15 @@ def _slug_title(slug):
     slug = urllib.parse.unquote(slug).strip("/").split("/")[-1]
     slug = re.sub(r"[-_]+", " ", slug)
     slug = re.sub(r"\s+", " ", slug).strip()
-    return slug
+    # Slugs are lowercase ("ready-or-not-le-domas-legacy"); title-case each
+    # word so the index gets a readable title. Words that already carry
+    # mixed case are left alone.
+    words = []
+    for w in slug.split(" "):
+        if w and w == w.lower():
+            w = w[:1].upper() + w[1:]
+        words.append(w)
+    return " ".join(words)
 
 # --------------------------------------------------------------------------
 # RSS / Atom feed parsing
@@ -298,6 +318,8 @@ def _parse_feed(text, source, editor):
                 continue
             title = ""
             link = ""
+            html_link = ""
+            first_link = ""
             for child in entry:
                 name = _local(child.tag)
                 if name == "title":
@@ -305,10 +327,18 @@ def _parse_feed(text, source, editor):
                 elif name == "link":
                     rel = child.get("rel") or "alternate"
                     href = child.get("href") or ""
-                    if rel in ("alternate", "") and href and not link:
+                    ctype = child.get("type") or ""
+                    if href and not first_link:
+                        first_link = href
+                    if rel == "alternate" and href:
                         link = href
-                    elif href and not link:
-                        link = href
+                    elif ctype == "text/html" and href and not html_link:
+                        html_link = href
+            # Blogger entries list a rel="self" (comments-feed) link first;
+            # only rel="alternate" (or an explicit text/html link) is the
+            # post URL. Fall back to the first link only as a last resort.
+            if not link:
+                link = html_link or first_link
             if title:
                 records.append(_record(label, editor, title, link or url,
                                        "website"))
@@ -331,19 +361,18 @@ def _parse_feed(text, source, editor):
 
 
 def _feed_candidates(url):
-    """Ordered feed URLs to try for a site (RSS discovery, cheapest first)."""
+    """Ordered feed URLs to try for a site (RSS discovery, cheapest first).
+
+    Kept short on purpose: the per-source fetch budget is 4, and the
+    homepage + a possible autodiscovered feed still need room.
+    """
     host = _host(url)
     base = url.rstrip("/")
-    cands = []
     if "blogspot." in host:
-        cands.append(base.split("?")[0].rstrip("/") + "/feeds/posts/default")
+        return [base.split("?")[0].rstrip("/") + "/feeds/posts/default"]
     if "wordpress.com" in host:
-        cands.append(base.split("?")[0].rstrip("/") + "/feed/")
-    for suffix in ("/feed/", "/rss/", "/feed.xml", "/rss.xml", "/atom.xml"):
-        cand = base + suffix
-        if cand not in cands:
-            cands.append(cand)
-    return cands
+        return [base.split("?")[0].rstrip("/") + "/feed/"]
+    return [base + "/feed/", base + "/rss/"]
 
 
 _FEED_LINK_RE = re.compile(
@@ -467,10 +496,21 @@ def _events_from_html(html_text, base_url):
 
 
 def _img_filename_title(src):
-    name = urllib.parse.unquote(src).split("/")[-1]
+    name = urllib.parse.unquote_plus(src).split("?")[0].split("/")[-1]
     name = re.sub(r"\.(jpg|jpeg|png|webp|gif|avif)$", "", name, flags=re.I)
     name = re.sub(r"^(thumb|thumbnail)[ _-]+", "", name, flags=re.I)
     if re.match(r"^(il_|[\w]{20,}$)", name) or len(name) < 3:
+        return ""
+    if "logo" in name.lower():
+        return ""
+    # Squarespace serves some posters under random IDs ("91NmnNIXAkL"):
+    # a single token, 8–16 chars, mixed case with digits, is an ID, not a
+    # title. Real one-word titles ("nightmare", "mst3k") are lowercase or
+    # have no digits mixed with uppercase.
+    if (" " not in name and "-" not in name and "_" not in name
+            and 8 <= len(name) <= 16
+            and re.search(r"[a-z]", name) and re.search(r"[A-Z]", name)
+            and re.search(r"\d", name)):
         return ""
     name = re.sub(r"[-_]+", " ", name)
     name = re.sub(r"\s+", " ", name).strip()
@@ -574,6 +614,10 @@ def _p_lightspeed(events, source, editor):
         if kind != "a" or "/vault/" not in a:
             continue
         title = b.strip(" —-").strip()
+        # Link text concatenates a "FEATURED EDIT" eyebrow label with the
+        # title, sometimes with no space between ("FEATURED EDITSUPERMAN").
+        title = re.sub(r"^FEATURED EDITS?\s+", "", title, flags=re.I)
+        title = re.sub(r"^FEATURED EDIT(?=[A-Z])", "", title)
         if len(title) >= 3:
             recs.append(_record(label, editor, title, a, "website"))
     return recs
@@ -594,6 +638,8 @@ def _p_tfn(events, source, editor):
 
 def _p_hunkulous(events, source, editor):
     # Google Sites page: <h2> title, then a Drive link (file or folder).
+    # Only edit headings count — "Instructions" / "Extras" are sections,
+    # not edits, so they never become pending titles.
     label, url = source["label"], source["url"]
     recs = []
     pending = None
@@ -602,7 +648,11 @@ def _p_hunkulous(events, source, editor):
             if pending:
                 recs.append(_record(label, editor, pending, url, "website"))
             title = b.rstrip(":").strip()
-            pending = title if title else None
+            if title.startswith("Hunkulous'") or (
+                    "Clone Wars" in title and "Without Ahsoka" in title):
+                pending = title
+            else:
+                pending = None
         elif kind == "a" and pending and "drive.google.com" in a:
             recs.append(_record(label, editor, pending, a, "website",
                                 kind=_drive_kind(a)))
@@ -644,6 +694,36 @@ def _p_pentex(events, source, editor):
     return recs
 
 
+def _p_blogspot_homepage(events, source, editor):
+    # Fallback for Blogspot blogs whose feed is dead (e.g. Maniac): post
+    # links on the homepage look like /YYYY/MM/slug.html on the same host.
+    label, url = source["label"], source["url"]
+    host = _host(url)
+    recs = []
+    for kind, a, b in events:
+        if kind != "a" or _host(a) != host:
+            continue
+        path = urllib.parse.urlparse(a).path
+        if re.match(r"^/\d{4}/\d{2}/[^/]+\.html$", path) and len(b) >= 3:
+            recs.append(_record(label, editor, b, a, "website"))
+    return recs
+
+
+def _p_wordpress_homepage(events, source, editor):
+    # Fallback for WordPress blogs whose feed is empty: post links look
+    # like /YYYY/MM/DD/slug/ on the same host.
+    label, url = source["label"], source["url"]
+    host = _host(url)
+    recs = []
+    for kind, a, b in events:
+        if kind != "a" or _host(a) != host:
+            continue
+        path = urllib.parse.urlparse(a).path
+        if re.match(r"^/\d{4}/\d{2}/\d{2}/[^/]+/?$", path) and len(b) >= 3:
+            recs.append(_record(label, editor, b, a, "website"))
+    return recs
+
+
 def _p_xenforo(events, source, editor):
     # fanedit.org front page: recent thread links (/threads/<slug>.<id>/).
     label, url = source["label"], source["url"]
@@ -658,15 +738,25 @@ def _p_xenforo(events, source, editor):
 
 
 def _p_originaltrilogy(events, source, editor):
-    # Forum topic list: links to /topic/<slug>/id/<n>.
+    # Forum topic list: links to .../page/topic/<slug>/id/<n>. Each topic
+    # appears twice — once with its title, once with a "Replies<N>" anchor —
+    # and once as a "Start a new topic" action link; all three share the
+    # /topic/ pattern, so filter the non-title anchors out.
     label, url = source["label"], source["url"]
     recs = []
     for kind, a, b in events:
         if kind != "a" or "/topic/" not in a:
             continue
-        if len(b) < 4 or b.lower() in _NAV_TEXT:
+        if "/topic/action/" in a:
             continue
-        recs.append(_record(label, editor, b, a, "website"))
+        if re.match(r"^Replies\d+$", b):
+            continue
+        title = b.split("|")[0].strip()
+        if len(title) < 4 or title.lower() in _NAV_TEXT:
+            continue
+        if title.lower().startswith("start a new topic"):
+            continue
+        recs.append(_record(label, editor, title, a, "website"))
     return recs
 
 
@@ -713,6 +803,8 @@ _SITE_PARSERS = [
     ("originaltrilogy.com", _p_originaltrilogy),
     ("fanrestore.com", _p_fanrestore),
     ("moviesremastered.com", _p_generic_thread),
+    ("blogspot.", _p_blogspot_homepage),
+    ("wordpress.com", _p_wordpress_homepage),
 ]
 
 # Sites probed 2026-11-05 where no usable edit list exists. The adapter
@@ -720,7 +812,9 @@ _SITE_PARSERS = [
 # (Blogspot / WordPress sites are NOT here — the core RSS adapter owns them;
 #  this module only falls back to them when a source is dispatched here with
 #  adapter "website".)
-_SKIP_SITES = {
+# Host-based skips match on the full hostname (never a URL substring —
+# "x.com" must not match "editsbypentex.com").
+_SKIP_HOSTS = {
     "linktr.ee": "link aggregator, no edit list",
     "x.com": "social profile, not an edit listing",
     "twitter.com": "social profile, not an edit listing",
@@ -734,25 +828,69 @@ _SKIP_SITES = {
     "firemerkstudios.com": "vault under maintenance, no edit titles in page",
     "faneditcentral.wixsite.com": "Wix app content not present in static HTML",
     "fanworx.org": "community site in development, no edit database yet",
+    "notflixfanedits.com": "feed is empty (0 posts); edit list requires registration",
+    "defuse.ca": "password-gated pastebin mirror, not covered by core Pastebin adapter",
+}
+# Full-URL skips (path-specific; host alone is not enough to tell).
+_SKIP_URLS = {
     "sites.google.com/view/faneditfanclub": "own club site; collection covered by core Drive adapter",
     "sites.google.com/student.iolaisd.net": "category index only; edits live on subpages not enumerated on homepage",
-    "defuse.ca": "password-gated pastebin mirror, not covered by core Pastebin adapter",
 }
 
 
-def _site_parser_for(host):
+def _site_parser_for(url):
+    """Match a per-site parser by host or path substring (some parsers key
+    on a path fragment, e.g. Google Sites slugs)."""
+    low = url.lower()
     for needle, fn in _SITE_PARSERS:
-        if needle in host:
+        if needle in low:
             return fn
     return None
 
 
 def _skip_reason_for(url):
+    host = _host(url)
+    for needle, reason in _SKIP_HOSTS.items():
+        if host == needle or host.endswith("." + needle):
+            return reason
     low = url.lower()
-    for needle, reason in _SKIP_SITES.items():
+    for needle, reason in _SKIP_URLS.items():
         if needle in low:
             return reason
     return None
+
+
+def _archiveorg_records(ctx, state, source, editor):
+    """archive.org uploader pages (e.g. /details/@tedjunkpile) via the
+    public advancedsearch API — no key, no login. Returns a list of
+    records, or None when the URL is not an uploader page."""
+    label = source.get("label", "")
+    url = source.get("url", "")
+    m = re.search(r"archive\.org/details/@([A-Za-z0-9_.-]+)", url)
+    if not m:
+        return None
+    uploader = m.group(1)
+    q = ("https://archive.org/advancedsearch.php?q=uploader%%3A%%28%s%%29"
+         "&fl%%5B%%5D=identifier&fl%%5B%%5D=title&rows=1000&output=json"
+         % urllib.parse.quote(uploader))
+    text = _fetch_text(ctx, state, q, label, quiet=True)
+    if text is None:
+        return []
+    try:
+        resp = json.loads(text)
+        docs = resp["response"]["docs"]
+    except Exception:
+        return []
+    recs = []
+    for doc in docs:
+        ident = doc.get("identifier") or ""
+        title = doc.get("title") or ident
+        if not ident:
+            continue
+        recs.append(_record(label, editor, title,
+                            "https://archive.org/details/" + ident,
+                            "website"))
+    return recs
 
 
 def adapt_website(source, ctx):
@@ -774,6 +912,19 @@ def adapt_website(source, ctx):
     host = _host(url)
     state = _State()
     try:
+        # archive.org uploader pages go through the public search API.
+        if "archive.org" in host:
+            recs = _archiveorg_records(ctx, state, source, editor)
+            if state.rate_limited:
+                _log(ctx, "SKIP %s: rate-limited (HTTP 429) — retry next run"
+                     % label)
+                return []
+            if recs:
+                return _dedupe(recs)
+            if recs is not None:
+                _log(ctx, "SKIP %s: archive.org uploader %s returned no items"
+                     % (label, url))
+                return []
         # Google Sites pages have no feeds; go straight to HTML parsing.
         if "sites.google.com" not in host:
             feed_result = _try_feeds(ctx, state, source, editor)
@@ -791,7 +942,7 @@ def adapt_website(source, ctx):
                  % label)
             return []
         if homepage is None:
-            homepage = _fetch_text(ctx, state, url, label)
+            homepage = _fetch_text(ctx, state, url, label, quiet=True)
         if state.rate_limited:
             _log(ctx, "SKIP %s: rate-limited (HTTP 429) — retry next run"
                  % label)
@@ -799,7 +950,7 @@ def adapt_website(source, ctx):
         if not homepage:
             _log(ctx, "SKIP %s: could not fetch %s" % (label, url))
             return []
-        parser = _site_parser_for(host)
+        parser = _site_parser_for(url)
         if parser is None:
             _log(ctx, "SKIP %s: no feed and no HTML parser for %s"
                  % (label, host))
@@ -1005,11 +1156,14 @@ def _b64url_encode(b):
 # --------------------------------------------------------------------------
 
 _MEGA_API = "https://g.api.mega.co.nz/cs?id=0"
+# MEGA API error codes (SDK numbering).
 _MEGA_ERR = {-1: "internal error", -2: "args error", -3: "again (retry)",
              -4: "rate limit", -5: "failed", -6: "too many",
-             -9: "not found", -11: "access denied", -13: "expired",
-             -14: "wrong key", -15: "blocked", -16: "over quota",
-             -17: "temp unavailable", -18: "too many connections"}
+             -7: "out of range", -8: "expired", -9: "not found",
+             -10: "circular", -11: "access denied", -12: "already exists",
+             -13: "incomplete", -14: "wrong key",
+             -15: "invalid session id", -16: "blocked", -17: "over quota",
+             -18: "temp unavailable", -19: "too many connections"}
 
 
 def _mega_decrypt_attr(key16, b64attr):
@@ -1042,8 +1196,13 @@ def _mega_unwrap_key(parent_key16, k_field):
 
 
 def _mega_parse_folder_link(url):
-    """Return (handle, key_bytes, sub_handle) or None."""
+    """Return (handle, key_bytes, sub_handle) or None.
+
+    The Master Links doc stores at least one link with the '#' percent-
+    encoded as %23 in the path, so the URL is unquoted before parsing.
+    """
     try:
+        url = urllib.parse.unquote(url)
         parsed = urllib.parse.urlparse(url)
         frag = parsed.fragment
         m = re.search(r"folder/([A-Za-z0-9_-]+)", parsed.path)
@@ -1084,8 +1243,7 @@ def adapt_mega(source, ctx):
             _MEGA_API, label, ctx, state, data=body,
             headers={"Content-Type": "application/json"})
         if raw is None:
-            if not state.rate_limited:
-                _log(ctx, "SKIP %s: Mega API request failed" % label)
+            _skip_from_state(ctx, label, state, "Mega API request failed")
             return []
         try:
             resp = json.loads(raw.decode("utf-8"))
@@ -1209,8 +1367,8 @@ def adapt_gofile(source, ctx):
             _GOFILE_API + "/accounts", label, ctx, state, data=b"{}",
             headers={"Content-Type": "application/json"})
         if raw is None:
-            if not state.rate_limited:
-                _log(ctx, "SKIP %s: GoFile guest-token request failed" % label)
+            _skip_from_state(ctx, label, state,
+                             "GoFile guest-token request failed")
             return []
         try:
             acct = json.loads(raw.decode("utf-8"))
@@ -1227,8 +1385,8 @@ def adapt_gofile(source, ctx):
             label, ctx, state,
             headers={"Authorization": "Bearer " + token})
         if raw is None:
-            if not state.rate_limited:
-                _log(ctx, "SKIP %s: GoFile contents request failed" % label)
+            _skip_from_state(ctx, label, state,
+                             "GoFile contents request failed")
             return []
         try:
             resp = json.loads(raw.decode("utf-8"))
@@ -1432,6 +1590,8 @@ def _selftest():
 
     # 3. Rate-limit handling: a ctx that always raises HTTP 429 must
     #    produce [] + a rate-limited log line, never an exception.
+    #    (Website/Yandex use the ctx fetchers; Mega/GoFile use urllib
+    #    directly, so their 429 path is tested by patching urlopen.)
     import urllib.error as _ue
     logs = []
 
@@ -1444,21 +1604,91 @@ def _selftest():
                  "adapter": "website"}, ctx)
     assert out == [], out
     assert any("rate-limited" in m for m in logs), logs
-    out = adapt({"label": "Test Mega",
-                 "url": "https://mega.nz/folder/AAAAAAAA#AAAAAAAAAAAAAAAAAAAAAA",
-                 "adapter": "mega"}, ctx)
+    out = adapt({"label": "Test Yandex",
+                 "url": "https://disk.yandex.ru/d/AAAAAAAA",
+                 "adapter": "yandex"}, ctx)
     assert out == [], out
-    print("429 -> skip + log, never raises: OK")
+    assert sum("rate-limited" in m for m in logs) >= 2, logs
 
-    # 4. Feed parsing on a canned Atom document.
+    import urllib.request as _ur
+    _real_urlopen = _ur.urlopen
+
+    def urlopen_429(req, timeout=30):
+        raise _ue.HTTPError(req.full_url, 429, "Too Many Requests", {}, None)
+
+    _ur.urlopen = urlopen_429
+    try:
+        logs2 = []
+        ctx2 = {"fetch_text": raiser, "fetch_bytes": raiser,
+                "log": lambda m: logs2.append(m)}
+        out = adapt({"label": "Test Mega",
+                     "url": "https://mega.nz/folder/AAAAAAAA#AAAAAAAAAAAAAAAAAAAAAA",
+                     "adapter": "mega"}, ctx2)
+        assert out == [], out
+        out = adapt({"label": "Test GoFile",
+                     "url": "https://gofile.io/d/AAAAAAAA",
+                     "adapter": "gofile"}, ctx2)
+        assert out == [], out
+        assert sum("rate-limited" in m for m in logs2) >= 2, logs2
+    finally:
+        _ur.urlopen = _real_urlopen
+    print("429 -> skip + log, never raises (all four adapters): OK")
+
+    # 4. Feed parsing on a canned Atom document (Blogger-style: the first
+    #    link is rel="self" to the comments feed; rel="alternate" is the post).
     atom = ('<?xml version="1.0"?><feed xmlns="http://www.w3.org/2005/Atom">'
             '<entry><title>Example Cut</title>'
-            '<link rel="alternate" href="https://example.com/post1"/>'
+            '<link rel="self" type="application/atom+xml" '
+            'href="https://example.com/feeds/123/comments/default"/>'
+            '<link rel="alternate" type="text/html" '
+            'href="https://example.com/post1"/>'
             '</entry></feed>')
     recs = _parse_feed(atom, {"label": "T", "url": "https://example.com/"},
                        "Ed")
     assert len(recs) == 1 and recs[0]["title"] == "Example Cut", recs
-    print("Atom feed parse: OK")
+    assert recs[0]["url"] == "https://example.com/post1", recs
+    # 5. HTML parsers on canned pages.
+    src = {"label": "Hunkulous' Edits",
+           "url": "https://sites.google.com/view/hunkulous-edits"}
+    html_doc = ('<h2>Hunkulous\' Star Wars Episode I:</h2>'
+                '<a href="https://drive.google.com/file/d/ABC/view">Link</a>'
+                '<h2>Instructions</h2><p>do stuff</p>'
+                '<h2>Star Wars: The Clone Wars Without Ahsoka:</h2>'
+                '<a href="https://drive.google.com/drive/folders/XYZ">Link</a>')
+    ev = _events_from_html(html_doc, src["url"])
+    recs = _p_hunkulous(ev, src, "Hunkulous")
+    assert [r["title"] for r in recs] == [
+        "Hunkulous' Star Wars Episode I",
+        "Star Wars: The Clone Wars Without Ahsoka"], recs
+    assert recs[1]["kind"] == "folder", recs
+    assert all("Instructions" not in r["title"] for r in recs)
+    print("Hunkulous parser (sections excluded): OK")
+    src2 = {"label": "Light Speed Studios",
+            "url": "https://www.light-speed.studio/"}
+    ev2 = _events_from_html(
+        '<a href="https://light-speed.studio/vault/overtime.html">'
+        'FEATURED EDIT THE FLASH: OVERTIME</a>', src2["url"])
+    recs2 = _p_lightspeed(ev2, src2, "Light Speed")
+    assert recs2[0]["title"] == "THE FLASH: OVERTIME", recs2
+    assert _slug_title("ready-or-not-le-domas-legacy") == \
+        "Ready Or Not Le Domas Legacy"
+    print("Light Speed prefix strip + slug title-case: OK")
+    # 6. archive.org uploader search on canned JSON.
+    canned = json.dumps({"response": {"numFound": 2, "docs": [
+        {"identifier": "abc", "title": "Example Workprint Pilot"},
+        {"identifier": "def", "title": ""}]}})
+    ctx6 = {"fetch_text": lambda u, timeout=30: canned,
+            "fetch_bytes": lambda u, timeout=30: b"",
+            "log": lambda m: None}
+    recs6 = _archiveorg_records(ctx6, _State(),
+                                {"label": "tedjunkpile Workprint Pilots",
+                                 "url": "https://archive.org/details/@tedjunkpile"},
+                                "tedjunkpile")
+    assert len(recs6) == 2, recs6
+    assert recs6[0]["title"] == "Example Workprint Pilot"
+    assert recs6[0]["url"] == "https://archive.org/details/abc"
+    assert recs6[1]["title"] == "def"
+    print("archive.org uploader search: OK")
     print("SELFTEST PASSED")
 
 
