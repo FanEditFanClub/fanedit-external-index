@@ -1,0 +1,854 @@
+[
+  {
+    "label": "AcyliaEditz Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1BX7whTXroHCru4J8y7tjUGN6LOC-ePHT?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "ADIoS Fan Edits",
+    "url": "https://pastebin.com/i0qFKiz5",
+    "adapter": "pastebin",
+    "type": "source"
+  },
+  {
+    "label": "Almighty Cutie Fan Edits",
+    "url": "https://docs.google.com/document/d/1e_8PucR32AA9QkmqYacHoudDrqb99ozURbKUOSNk7XU/edit?usp=sharing",
+    "adapter": "doc",
+    "type": "source"
+  },
+  {
+    "label": "AnakinSkywalker Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1RZfZRD7TkLQIRlclZlXKu8gxewMhjicS?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Bad Movies Made Less Bad Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1BaKI2jV-Kpscxh977VgToYOkHCfq9nJf?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Baliscon Cut Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1autD6BNsTk-MgsHR7ht9De2QvFSkXDob?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "BigRett's Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1Hbwi08hvhVyDXw27Fydp-Wfu25wc7mNa?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "BMMLB Edits Dummy GDrive List",
+    "url": "https://docs.google.com/spreadsheets/d/1q-8S5ur_KvIucazR-mIcVea_T_N8lj_C/edit?usp=sharing&ouid=100270055410428625943&rtpof=true&sd=true",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "Bored's Library of Fan Edits",
+    "url": "https://drive.google.com/drive/folders/115cTyj3tzdLwOf-l6-jjcum6sfe7wCsq?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "chasedixon22's Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1BX7whTXroHCru4J8y7tjUGN6LOC-ePHT?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "duplicate",
+    "reason": "Same Drive folder ID as AcyliaEditz Fan Edits; kept one entry."
+  },
+  {
+    "label": "Chris King's Fan Edits",
+    "url": "https://drive.google.com/drive/folders/16mKHHSTQTuU2NE4aCtRT8PA1I-MsXtsG",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "CRTScream Fan Edits",
+    "url": "https://pastebin.com/WV3tZxby",
+    "adapter": "pastebin",
+    "type": "source"
+  },
+  {
+    "label": "Cuts of Numeral Joker (AKA Mecha Salesman)",
+    "url": "https://docs.google.com/document/u/0/d/1oholqKfI2MmH64sJ-KtcPEobnhjGal5l1eJE75KekfM/mobilebasic",
+    "adapter": "doc",
+    "type": "source"
+  },
+  {
+    "label": "DatabaseWise8723 / filmsstryker Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1TWCNlHkdaYWBaYvfCtrT1AsKOD3DwLEd?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Deckmx Fan Edits",
+    "url": "https://gofile.io/d/ekYUlP?auuix4jk4qdeaxsr3wtq4p6w7m=D28Ii9kzy-TJCYUj21xvHvyRah3KGuAFTe2RQkSqjHSB5NGOkhzpg7MSwUJCLXrBogZN8-NJ",
+    "adapter": "gofile",
+    "type": "source",
+    "note": "Handled by the extra-adapters module."
+  },
+  {
+    "label": "Derekwkim Fan Edits",
+    "url": "https://www.dropbox.com/scl/fo/txben9rnjqbyugmyae3pq/ABgEiU_K08GwWqOZtHbXRh4?rlkey=fom29sramxvc2fauwirrwbln9&st=yzoa3bfe&e=1&dl=0",
+    "adapter": "none",
+    "type": "skipped",
+    "reason": "Dropbox folder listing needs an access token; no public listing endpoint."
+  },
+  {
+    "label": "DigModiFicaTion Fan Edits",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSermqqhS8aI_g4Ix20o9DAhPfaymTFke6Ohl1zuw-0k_4EBrw/viewform",
+    "adapter": "none",
+    "type": "skipped",
+    "reason": "Google Form (request/submission form), not a catalog."
+  },
+  {
+    "label": "Don Porcino Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1CNWFS1Bi8k9wiK-rbo74JOJfpYkkrgi2?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Fan Edit Fan Club Collection",
+    "url": "https://drive.google.com/drive/folders/1kGaeK1unqWD1VOl3-DGWLAxISBhDR3cg?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "out_of_scope",
+    "reason": "The club's own collection; the overlap baseline, not an external source."
+  },
+  {
+    "label": "florentdrive Fan Edits",
+    "url": "https://docs.google.com/spreadsheets/d/1_3i8WnzGFot-qvF_NVrfGrtkhD3WM1bk24M6QgWlBJI/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "Gamer's Little Playground",
+    "url": "https://www.youtube.com/@glp",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Hockey Dolphin Productions",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSeSRH7U_JPLDjBM7g-afwAhwRr6m42VAjXnMLyaoKykf4x8HA/viewform",
+    "adapter": "none",
+    "type": "skipped",
+    "reason": "Google Form (request/submission form), not a catalog."
+  },
+  {
+    "label": "Hondo's Trove / Hal9000 Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1tv6RYyquCAp4DnWOJYrIHap5o-r5MVrr?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "IC Fan Edits",
+    "url": "https://docs.google.com/document/d/1szxRQNpzRf7n63zIG94Ni3wKV8DK3WgwLLwWphU5YVc/edit?usp=sharing",
+    "adapter": "doc",
+    "type": "source"
+  },
+  {
+    "label": "Krypton7887 Superman Fan Edits",
+    "url": "https://mega.nz/folder/VLYwnICK#IK9Z8B8jPPdwhfUIIKb2CA",
+    "adapter": "mega",
+    "type": "source",
+    "note": "Handled by the extra-adapters module."
+  },
+  {
+    "label": "LapisMolari’s 007 Edits",
+    "url": "https://www.dropbox.com/scl/fo/zsve5ojrzjxpepjo843k6/h?rlkey=49v6ynmleqi9t7xymd9e73j3y&e=1&dl=0",
+    "adapter": "none",
+    "type": "skipped",
+    "reason": "Dropbox folder listing needs an access token; no public listing endpoint."
+  },
+  {
+    "label": "Lifecereal Fan Edits",
+    "url": "https://docs.google.com/document/d/1kdQ3NsYX9JG1hb9P00EYzGZt1GVAooxm2d1KxQKykKI/edit?usp=sharing",
+    "adapter": "doc",
+    "type": "source"
+  },
+  {
+    "label": "LP Recuts Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1ZVAFyWLGZyOhzr4duA1O1ar6PDAp-Qcs?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Martokc Extended Edition Fan Edits",
+    "url": "https://disk.yandex.ru/d/QdXTdvYlWl-QtQ",
+    "adapter": "yandex",
+    "type": "source",
+    "note": "Handled by the extra-adapters module."
+  },
+  {
+    "label": "Marvel Universe Master Watch Order",
+    "url": "https://docs.google.com/spreadsheets/d/1zDmV_KFUXoRbwKscp9ZKJN_S2MoiLwi4nJosrFlrml8/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "MusicEd’s 007 edits",
+    "url": "https://mega.nz/folder/RFoBiKIB%23Eo13xhhqRupgQt-1VqF5_w/folder/1IoRASBb",
+    "adapter": "mega",
+    "type": "source",
+    "note": "Handled by the extra-adapters module."
+  },
+  {
+    "label": "RetroStranger95’s Fan Edits",
+    "url": "https://pastebin.com/3j6pBdn1",
+    "adapter": "pastebin",
+    "type": "source",
+    "password": "J120qPS2wqe",
+    "note": "Password-protected list; password is in the Master Links doc."
+  },
+  {
+    "label": "Risinger Productions Fan Edit Sheet",
+    "url": "https://docs.google.com/spreadsheets/d/162TNZ_7uNf77i_1l8OGzE3zQ90NC6J4YtiUo0cmAD9I/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "Road's Family Edit Sheet",
+    "url": "https://docs.google.com/spreadsheets/d/1A1v3VvknaY2x7Oc1JYV9f6wDNi5YHO3COY997srd-Ug/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "Russian Open Mattes",
+    "url": "https://storage.open-matte.ru/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "RyansGate Fan Edits",
+    "url": "https://docs.google.com/document/u/0/d/1whSOowGZdPxc6PCJQ8EyKtuU_pbebFK633rwEKo5OvM/mobilebasic",
+    "adapter": "doc",
+    "type": "source"
+  },
+  {
+    "label": "Sam White The 3rd's Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1I-RVSGo6pL2ZE5ryezuB7t8Xvg-GXP_0?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "shion93 Fan Edits",
+    "url": "https://docs.google.com/document/d/1TNvEuoP9O_Zbqgf0nErxMZAK_GskbXyMvzyyjKaLxtY/edit?tab=t.0",
+    "adapter": "doc",
+    "type": "source"
+  },
+  {
+    "label": "soulfulbody Fan Edits",
+    "url": "https://pastebin.com/vxhjYuf5",
+    "adapter": "pastebin",
+    "type": "source"
+  },
+  {
+    "label": "Spencer Fan Edits",
+    "url": "https://mega.nz/folder/MxRHxQCZ#yvQD6x-q-XrQri6ZJ-NaWQ",
+    "adapter": "mega",
+    "type": "source",
+    "note": "Handled by the extra-adapters module."
+  },
+  {
+    "label": "Stranger Things Film Collection",
+    "url": "https://drive.google.com/file/d/1Hb5QwY38iTFSl0VaYY6XrbwI8EBXAhJE/view?usp=drive_link",
+    "adapter": "drive_file",
+    "type": "source",
+    "note": "Single Drive file; title is the doc link text."
+  },
+  {
+    "label": "tedjunkpile Workprint Pilots",
+    "url": "https://archive.org/details/@tedjunkpile",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "thecuddlyninja Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1Vm8fQF42MJGwshe8M2rVTht1XQwA6ozL?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "The Family Edit Database - Movies",
+    "url": "https://docs.google.com/spreadsheets/d/1efLmUJtZdLewR1CIyuT5-pjgM2JmZgA4xqjAI8b2Beg/edit?gid=0#gid=0",
+    "adapter": "sheet",
+    "type": "source",
+    "gid": "0",
+    "note": "Sheet tab selected by gid in URL."
+  },
+  {
+    "label": "The Family Edit Database - TV",
+    "url": "https://docs.google.com/spreadsheets/d/1qbUTDCieniT4Z5SPzLdckjl2iKVGwjl2skQzBjAZFEw/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "TheSkeletorMan Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1xm6Gye24v1LkdUSGPs3BeAXd3S5fvHS7?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Through Fire and Ice",
+    "url": "https://docs.google.com/document/d/1EBrjKwoaudTc9CPylrZfnvjUI7z6RXR4aP2SrbHTctY/edit?usp=sharing",
+    "adapter": "doc",
+    "type": "source"
+  },
+  {
+    "label": "Tone Capone’s Fan Edits",
+    "url": "https://gofile.io/d/NNFkaH?fbclid=IwY2xjawTgG3pleHRuA2FlbQIxMQBicmlkETFDdktlUVk0azBHaGtvUjAyc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHh_WZRp7MOetzQK717dUL6ocwzuwofvq-Qmvb1mbIpAfgX3JeCD9bMa5BSaB_aem_CzQS0yRV0nS2sO5qVRgjDg",
+    "adapter": "gofile",
+    "type": "source",
+    "note": "Handled by the extra-adapters module."
+  },
+  {
+    "label": "TV Edit Database",
+    "url": "https://docs.google.com/spreadsheets/d/1oLgyfAqmSV0uW4M5zB8gI6oEiZX0Wb8ItddZBQRnlG8/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "VAS / Vasglorious Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1tikbxR-YW1W6a5U9FM43RsK7ZVEHc5PG?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Womp Rat's Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1RPOCMHXIdLXOhcOaqzszUwLIAz3MkUXY?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "Zubero Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1btHaDzUdsUlho71xkxB0cKs_BlUmu54A?usp=drive_link",
+    "adapter": "drive_folder",
+    "type": "source"
+  },
+  {
+    "label": "AWW Fan Edits",
+    "url": "https://americanwadewilson.blogspot.com/feeds/posts/default",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://americanwadewilson.blogspot.com/"
+  },
+  {
+    "label": "APreciousBlueberry's FAN-EDIT Compendium",
+    "url": "https://apreciousblueberry.github.io/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Artwork Fan Edits",
+    "url": "https://www.plboucherdesigns.com/fanedits",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "avid4d Fan Edits",
+    "url": "https://www.avid4d.com/fanedits",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Bad Movies Made Less Bad",
+    "url": "https://badmoviesmadelessbad.com/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Best Edit Fan Edits",
+    "url": "https://bestedit.net/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Best Edit Pastebin",
+    "url": "https://defuse.ca/b/PVODh9gymdTI6Gc3PE28q3",
+    "adapter": "pastebin",
+    "type": "source",
+    "password": "DarkwaterS-fanedit-renders",
+    "note": "Password-protected list; password is in the Master Links doc."
+  },
+  {
+    "label": "BingeGuy Fan Edits",
+    "url": "https://bingeguy.com/starwars/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Cutsmith Fan Edits",
+    "url": "https://relapsotucustethecutsmith.blogspot.com/feeds/posts/default",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://relapsotucustethecutsmith.blogspot.com/?m=1"
+  },
+  {
+    "label": "Dawnrazor Fan Edits",
+    "url": "https://dawnrazoredits.blogspot.com/feeds/posts/default",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://dawnrazoredits.blogspot.com/"
+  },
+  {
+    "label": "Doctor Who: The Fan Edits",
+    "url": "https://doctorwhotime.wordpress.com/feed/",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://doctorwhotime.wordpress.com/"
+  },
+  {
+    "label": "DR. SAPIRSTEIN RARE FILMS, RESTORATIONS, EXTENDED CUTS & EDITS",
+    "url": "https://drsapirstein.blogspot.com/feeds/posts/default",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://drsapirstein.blogspot.com/"
+  },
+  {
+    "label": "Ewoking Fan Edits",
+    "url": "https://linktr.ee/Ewoking",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Fan Edit Fan Club",
+    "url": "https://sites.google.com/view/faneditfanclub/home",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "The club's own site, not an external source."
+  },
+  {
+    "label": "Fan Edits United",
+    "url": "https://x.com/mwhoopsada68394?s=11",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "FanRestore",
+    "url": "https://www.fanrestore.com",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "FIREMERK STUDIOS",
+    "url": "https://www.firemerkstudios.com/the-vault",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Future World Multimedia",
+    "url": "https://www.futureworldmultimedia.com/fanedits",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "geKKo Fan Edits",
+    "url": "https://cvdfunnies.wordpress.com/feed/",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://cvdfunnies.wordpress.com/"
+  },
+  {
+    "label": "Hunkulous' Edits",
+    "url": "https://sites.google.com/view/hunkulous-edits",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Indiana Jones Fan Edits",
+    "url": "https://youtube.com/playlist?list=PLR42T9mAdgTX_EWcnvsIE56m4dBiSTKs3&si=R5evysdzIOQeb1uq",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Job Willins Fan Edits",
+    "url": "https://jobwillins.wordpress.com/feed/",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://jobwillins.wordpress.com/"
+  },
+  {
+    "label": "Kai Patterson Fan Edits",
+    "url": "https://www.kaipattersonfilms.com/fanedits",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Light Speed Studios",
+    "url": "https://www.light-speed.studio/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Lord Alvarez Edits",
+    "url": "https://lordalvarezedits.weebly.com/projects.html",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Maniac Fan Edits",
+    "url": "https://maniac1962.blogspot.com/feeds/posts/default",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://maniac1962.blogspot.com/"
+  },
+  {
+    "label": "Maple Films",
+    "url": "http://www.maple-films.com/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "NOTFLIX Fan Edits",
+    "url": "https://notflixfanedits.com/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Pentex Fan Edits",
+    "url": "https://editsbypentex.com/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "rutracker",
+    "url": "https://rutracker.org/forum/viewforum.php?f=807",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Starlight Fan Edits",
+    "url": "https://starlightfanedits.blogspot.com/feeds/posts/default",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://starlightfanedits.blogspot.com/"
+  },
+  {
+    "label": "The Family Edit Center",
+    "url": "https://familyeditcenter.netlify.app/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "The Family Editor Database",
+    "url": "https://docs.google.com/spreadsheets/d/1k8s-bCXYSyoxRNHatrc8iENjphtqBd6bxmCgjKHS4Ck/edit?usp=drivesdk",
+    "adapter": "sheet",
+    "type": "source"
+  },
+  {
+    "label": "The Fan Edit Doctor",
+    "url": "https://faneditsblog.wordpress.com/feed/",
+    "adapter": "rss",
+    "type": "source",
+    "site_url": "https://faneditsblog.wordpress.com/"
+  },
+  {
+    "label": "The Fan Edit Network",
+    "url": "https://sites.google.com/view/thefaneditnetwork/tfn-catalog",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "The Fan Edit Network - 05/27/2024 (Archive)",
+    "url": "https://archive.ph/qypWQ",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "The Fan Edit Network - Monday October 3, 2022 (Archive)",
+    "url": "https://archive.ph/wkNGW#selection-209.14-209.36",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "The Galactic Network",
+    "url": "https://sites.google.com/student.iolaisd.net/galacticnetwork/home",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "The Star Wars Trilogy - Project Download List",
+    "url": "https://forums.thestarwarstrilogy.com/threads/project-download-list.1814/#4k77",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Fan Edit Central Database",
+    "url": "https://faneditcentral.wixsite.com/home",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Sheet",
+    "url": "https://docs.google.com/spreadsheets/d/18X0QzR904z94NZd7RXOaCuIa117fF0jnEmd7smmj7D0/edit?usp=sharing",
+    "adapter": "sheet",
+    "type": "source",
+    "sheet": "By Release Date",
+    "note": "Data tab 'By Release Date' (4,643 rows); first tab is a disclaimer sheet."
+  },
+  {
+    "label": "Sort By Fan Editor OR Original Title",
+    "url": "https://docs.google.com/spreadsheets/d/18X0QzR904z94NZd7RXOaCuIa117fF0jnEmd7smmj7D0/edit?gid=316095198#gid=316095198",
+    "adapter": "sheet",
+    "type": "duplicate",
+    "note": "Sheet tab selected by gid in URL.",
+    "reason": "Same Central Database sheet as 'Sheet'; sort-helper tab over the same data, not a separate catalog."
+  },
+  {
+    "label": "FANEDIT.ORG",
+    "url": "http://FANEDIT.ORG",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Fan Edit Search",
+    "url": "https://fanedit.org/fanedit-search/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Handled by the extra-adapters module (fanedit.org)."
+  },
+  {
+    "label": "Fan Worx",
+    "url": "https://www.fanworx.org/",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "MRDb",
+    "url": "https://www.moviesremastered.com/hub.php",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Original Trilogy",
+    "url": "https://originaltrilogy.com/discussion/Fan-Edits-and-Projects-for-Other-Properties/id/11/page/1",
+    "adapter": "website",
+    "type": "source",
+    "note": "Best-effort website adapter (extra-adapters module)."
+  },
+  {
+    "label": "Fan Edit Fan Club Reddit Feed",
+    "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/BadMoviesMadeLessBad",
+    "url": "https://www.reddit.com/r/BadMoviesMadeLessBad/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/deletedscenesmovies",
+    "url": "https://www.reddit.com/r/deletedscenesmovies/?screen_view_count=1",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Familyedit",
+    "url": "https://www.reddit.com/r/Familyedit/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Familyedits",
+    "url": "https://www.reddit.com/r/Familyedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FanEditCentral",
+    "url": "https://www.reddit.com/r/FanEditCentral/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FanEditedMovies",
+    "url": "https://www.reddit.com/r/FanEditedMovies/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FanEditFanClub",
+    "url": "https://www.reddit.com/r/FanEditFanClub",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/faneditfrontier",
+    "url": "https://www.reddit.com/r/faneditfrontier/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/fanedit",
+    "url": "https://www.reddit.com/r/fanedit/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/fanedits",
+    "url": "https://www.reddit.com/r/fanedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/FANEDITS_",
+    "url": "https://www.reddit.com/r/FANEDITS_/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Faneditdotorg_News",
+    "url": "https://www.reddit.com/r/Faneditdotorg_News/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/GamesTheMovie",
+    "url": "https://www.reddit.com/r/GamesTheMovie/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/moviesremastered",
+    "url": "https://www.reddit.com/r/moviesremastered/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/pentexproductions",
+    "url": "https://www.reddit.com/r/pentexproductions/?screen_view_count=1&ext-referrer=DIRECT",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Rett_Renders",
+    "url": "https://www.reddit.com/r/Rett_Renders/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/starlightfanedits",
+    "url": "https://www.reddit.com/r/starlightfanedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/TheEditRoom",
+    "url": "https://www.reddit.com/r/TheEditRoom/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/Unfair",
+    "url": "https://www.reddit.com/r/Unfair/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "r/YourFanEdits",
+    "url": "https://www.reddit.com/r/YourFanedits/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Firehose, not a catalog; weekly catalog cron already mines them."
+  },
+  {
+    "label": "Archive.org - Fan Edit Search",
+    "url": "https://archive.org/search?query=Fan+Edit&sort=-addeddate",
+    "adapter": "none",
+    "type": "search_template",
+    "note": "Query-URL template for later fallback use; not indexed."
+  },
+  {
+    "label": "BITCHUTE - Fan Edit Search",
+    "url": "https://www.bitchute.com/search?query=Fan+edit&kind=video&sensitivity_id=normal&duration=all&sort=new",
+    "adapter": "none",
+    "type": "search_template",
+    "note": "Query-URL template for later fallback use; not indexed."
+  },
+  {
+    "label": "Fan Edit Fan Club Reddit Feed - Fan Edit Search",
+    "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/search/?q=Fan+Edit&cId=0e403eec-eb4b-47a8-bd80-842359cc6612&iId=f84f2531-47c0-49c6-9095-c49e6c39aa04",
+    "adapter": "none",
+    "type": "search_template",
+    "note": "Query-URL template for later fallback use; not indexed."
+  },
+  {
+    "label": "Grok Bot - Fan Edit Optimus",
+    "url": "https://x.ai/bot/DR18SV4AEeeNRcKT1U-0P",
+    "adapter": "none",
+    "type": "search_template",
+    "note": "Bot link listed with the search engines; not a query template."
+  },
+  {
+    "label": "FANEDIT.ORG - Fan Edit Search",
+    "url": "https://fanedit.org/fanedit-search/",
+    "adapter": "none",
+    "type": "search_template",
+    "note": "Query-URL template for later fallback use; not indexed."
+  },
+  {
+    "label": "The Pirate Bay - Fan Edit Search",
+    "url": "https://thepiratebay.org/search.php?q=Fan+Edit&video=on&search=Pirate+Search&page=0&orderby=",
+    "adapter": "none",
+    "type": "search_template",
+    "note": "Query-URL template for later fallback use; not indexed."
+  }
+]
