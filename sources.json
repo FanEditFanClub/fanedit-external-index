@@ -993,6 +993,13 @@
     "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
   },
   {
+    "label": "The Fan Edit / Hard To Find Media Group #1",
+    "url": "https://www.facebook.com/groups/1466216162354367/",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Facebook group, not a catalog; weekly catalog cron already mines them."
+  },
+  {
     "label": "The FanEdit & Workprint Hub 🎥🍿💀🖤",
     "url": "https://www.facebook.com/groups/1480670097295925/",
     "adapter": "none",
