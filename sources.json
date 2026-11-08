@@ -644,6 +644,12 @@
     "note": "Best-effort website adapter (extra-adapters module)."
   },
   {
+    "label": "FanEditFanClub-WP-Forums",
+    "url": "https://fanedit-wp-format.freeforums.net/",
+    "adapter": "website",
+    "type": "source"
+  },
+  {
     "label": "FanRestore",
     "url": "https://www.fanrestore.com",
     "adapter": "website",
@@ -897,6 +903,13 @@
   {
     "label": "🗂️fan-edit-fan-club-collection",
     "url": "https://discord.gg/XdDZZ8444q",
+    "adapter": "none",
+    "type": "out_of_scope",
+    "reason": "Discord server, not a catalog."
+  },
+  {
+    "label": "Fan edits, Workprints, VHS, 35mm and more!",
+    "url": "https://discord.gg/deWyjBWDtB",
     "adapter": "none",
     "type": "out_of_scope",
     "reason": "Discord server, not a catalog."
