@@ -229,6 +229,27 @@ def infer_source(entry: dict) -> dict:
         if "x.ai" in host:
             return out("none", "search_template", note=BOT_NOTE)
         return out("none", "search_template", note=SEARCH_TEMPLATE_NOTE)
+    # Reddit feeds the bot indexes (added 2026-11-09): the club's
+    # curated multireddit (what the Reddit poster shares to
+    # #reddit-fan-edits-feed) and r/fanedits, as RSS sources. Must
+    # come before the club-channel and Reddit-firehose rules below,
+    # which would otherwise mark both out of scope.
+    _canon = url.split("?")[0].rstrip("/")
+    if _canon.lower().endswith("/new"):
+        _canon = _canon[:-4].rstrip("/")
+    if _canon.lower() == (
+            "https://www.reddit.com/user/faneditfanclub/m/"
+            "fan_edit_fan_club_reddit_feed"):
+        item = out("rss", "source")
+        item["url"] = (_canon + "/.rss")
+        item["note"] = ("The club's curated multireddit (what the Reddit "
+                        "poster automation shares to #reddit-fan-edits-feed).")
+        return item
+    if _canon.lower() == "https://www.reddit.com/r/fanedits":
+        item = out("rss", "source")
+        item["url"] = "https://www.reddit.com/r/fanedits/new/.rss"
+        item["note"] = "Main fan-edit subreddit."
+        return item
     # Any other URL carrying the club's own name is the club's own
     # channel/profile (YouTube, X, Letterboxd, forum profiles, ...),
     # not an external catalog. (Placed after the Search Engines check
