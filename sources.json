@@ -70,7 +70,7 @@
     "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/.rss",
     "adapter": "rss",
     "type": "source",
-    "note": "The club's curated multireddit (what the Reddit poster automation shares to #reddit-fan-edits-feed). Reddit Atom feed; added 2026-11-09 so the bot knows Reddit-sourced fan edits."
+    "note": "The club's curated multireddit (what the Reddit poster automation shares to #reddit-fan-edits-feed)."
   },
   {
     "label": "r/BadMoviesMadeLessBad",
@@ -140,7 +140,7 @@
     "url": "https://www.reddit.com/r/fanedits/new/.rss",
     "adapter": "rss",
     "type": "source",
-    "note": "Main fan-edit subreddit. Reddit Atom feed; added 2026-11-09 so the bot knows Reddit-sourced fan edits."
+    "note": "Main fan-edit subreddit."
   },
   {
     "label": "r/FANEDITS_",
@@ -1224,10 +1224,10 @@
   },
   {
     "label": "Fan Edit Fan Club Reddit Feed",
-    "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/new/",
-    "adapter": "none",
-    "type": "duplicate",
-    "reason": "Same multireddit as the Fan Edit Fan Club Reddit Feed RSS source; the .rss entry covers it."
+    "url": "https://www.reddit.com/user/faneditfanclub/m/fan_edit_fan_club_reddit_feed/.rss",
+    "adapter": "rss",
+    "type": "source",
+    "note": "The club's curated multireddit (what the Reddit poster automation shares to #reddit-fan-edits-feed)."
   },
   {
     "label": "Eventbrite",
