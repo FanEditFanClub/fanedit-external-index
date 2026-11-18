@@ -418,6 +418,13 @@
     "note": "Password-protected list; password is in the Master Links doc."
   },
   {
+    "label": "Rettflix's Fan Edits",
+    "url": "https://drive.google.com/drive/folders/1Hbwi08hvhVyDXw27Fydp-Wfu25wc7mNa",
+    "adapter": "drive_folder",
+    "type": "duplicate",
+    "reason": "Same Drive folder ID as BigRett's Fan Edits; kept one entry."
+  },
+  {
     "label": "Risinger Productions Fan Edit Sheet",
     "url": "https://docs.google.com/spreadsheets/d/162TNZ_7uNf77i_1l8OGzE3zQ90NC6J4YtiUo0cmAD9I/edit?usp=sharing",
     "adapter": "sheet",
